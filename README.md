@@ -1,4 +1,5 @@
-📝 Django Blog A simple and clean blog built with Django. The project includes an admin panel, post categories, and a responsive UI using custom HTML and CSS. The blog is fully in English and ready for deployment or local testing.
+📝 Django Blog
+A simple and clean blog built with Django. The project includes an admin panel, post categories, and a responsive UI using custom HTML, CSS, and Bootstrap. The blog is fully in English and ready for deployment or local testing.
 
 🚀 Features 🗂 Create, edit, and delete blog posts
 
@@ -8,7 +9,7 @@
 
 🔐 Django Admin Panel for full control
 
-💻 Responsive layout using custom styles
+💻 Responsive layout using custom styles and Bootstrap
 
 💾 Requirements Python 3.8+
 
