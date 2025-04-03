@@ -129,9 +129,9 @@ EMAIL_HOST_PASSWORD = 'blyo fqbn nbrr txpf'
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static"
+# ]
 
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'user'
