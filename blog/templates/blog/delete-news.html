@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    Delete article
+{% endblock %}
+
+{% block content %}
+    <h1>Are you sure you want to delete the article "{{ object.title }}"?</h1>
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        <button class="btn btn-danger me-2" type="submit">Yes, delete</button>
+        <a href="{% url 'news-detail' object.id %}" class="btn btn-secondary">No, cancel</a>
+    </form>
+{% endblock %}
+
+{% block aside_block %}
+    <div class="col-lg-3 sidebar ml-5">
+        {% include 'blog/sidebar.html' %}
+    </div>
+{% endblock %}

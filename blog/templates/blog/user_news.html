@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<h2>All articles by {{ view.kwargs.username }}</h2>
+<h5>Total: {{ page_obj.paginator.count }}</h5>
+
+{% for post in news %}
+<div class="alert alert-light">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.text|striptags|truncatechars:200 }}</p>
+    <div class="d-flex align-items-start">
+        <img src="{{ post.avtor.profile.img.url }}" alt="{{ post.avtor }}" class="user_images me-3">
+        <div>
+            <span class="d-block text-muted">Published: {{ post.date|date:"M d, Y at H:i" }}</span>
+            <p><b>Author:</b> <a href="{% url 'user-news' post.avtor %}">{{ post.avtor }}</a></p>
+        </div>
+    </div>
+    <a href="{% url 'news-detail' post.id %}" class="btn btn-outline-warning mt-3">Read more</a>
+</div>
+{% endfor %}
+
+{% if is_paginated %}
+<div class="d-flex justify-content-center gap-2 mt-4">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-secondary">Previous</a>
+    {% endif %}
+
+    <span class="align-self-center">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-secondary">Next</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}
+{% block aside_block %}
+    <div class="col-lg-3 sidebar ml-5">
+        {% include 'blog/sidebar.html' %}
+    </div>
+{% endblock %}

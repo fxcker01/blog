@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    {% for post in news %}
+    <div class="alert alert-light">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|striptags|truncatechars:200 }}</p>
+        <div class="row">
+            <div class="d-flex">
+                <div>
+                    <img src="{{ post.avtor.profile.img.url }}" alt="{{ post.avtor }}" class="user_images">
+                </div>
+                <div class="mt-2">
+                    <span class="d-block text-muted">Publication: {{ post.date|date:"d E Y в H:i" }}</span>
+                    <p><b>Author:</b> <a href="{% url 'user-news' post.avtor %}">{{ post.avtor }}</a></p>
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'news-detail' post.id %}" class="btn btn-outline-warning mt-3">Read more</a>
+    </div>
+    {% endfor %}
+
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a href="{% url 'home' %}" class="btn btn-outline-danger">Return</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-danger">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if num == page_obj.number %}
+                <button class="btn btn-outline-danger">{{ num }}</button>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="?page={{ num }}" class="btn btn-outline-danger">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-danger">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages}}" class="btn btn-outline-danger">Last</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{% block aside_block %}
+    <div class="col-lg-3 sidebar ml-5">
+        {% include 'blog/sidebar.html' %}
+    </div>
+{% endblock %}
+
+

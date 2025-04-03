@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-light">
+    <h2>{{ object.title }}</h2>
+    <p>{{ object.text|safe }}</p>
+
+    <div class="d-flex align-items-start mt-3">
+        <img src="{{ object.avtor.profile.img.url }}" alt="{{ object.avtor }}" class="user_images me-3">
+        <div>
+            <span class="d-block text-muted">Published: {{ object.date|date:"M d, Y at H:i" }}</span>
+            <p><b>Author:</b> <a href="{% url 'user-news' object.avtor %}">{{ object.avtor }}</a></p>
+        </div>
+    </div>
+
+    {% if object.avtor == user %}
+    <hr>
+    <a href="{% url 'news-update' object.id %}" class="btn btn-info me-2">Edit article</a>
+    <a href="{% url 'news-delete' object.id %}" class="btn btn-danger">Delete article</a>
+    {% endif %}
+</div>
+{% endblock %}
+{% block aside_block %}
+    <div class="col-lg-3 sidebar ml-5">
+        {% include 'blog/sidebar.html' %}
+    </div>
+{% endblock %}
