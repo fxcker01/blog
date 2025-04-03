@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 class News(models.Model):
-    title = models.CharField('Название статьи', max_length=100, unique=True)
-    text = models.TextField('Основной текст статьи')
-    date = models.DateTimeField('Дата', default=timezone.now)
-    avtor = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
+    title = models.CharField('Article title', max_length=100, unique=True)
+    text = models.TextField('Main article content')
+    date = models.DateTimeField('Publication date', default=timezone.now)
+    avtor = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE)
 
-    views = models.IntegerField('Просмотры', db_default=1)
+    views = models.IntegerField('Views', db_default=1)
     # sizes = (
     #     ('S', 'Small'),
     #     ('M', 'Medium'),
@@ -26,5 +26,5 @@ class News(models.Model):
         return f'{self.title}'
 
     class Meta: 
-        verbose_name = 'Новость'
-        verbose_name_plural = 'Новости'
+        verbose_name = 'News article'
+        verbose_name_plural = 'News'

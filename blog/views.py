@@ -25,7 +25,7 @@ class ShowNewsView(ListView):
     def get_context_data(self, **kwards):
         ctx = super(ShowNewsView, self).get_context_data(**kwards)
 
-        ctx['title'] = 'Главная страница сайта'
+        ctx['title'] = 'Main page'
         return ctx
 
 
@@ -42,7 +42,7 @@ class UserAllNewsView(ListView):
     def get_context_data(self, **kwards):
         ctx = super(UserAllNewsView, self).get_context_data(**kwards)
 
-        ctx['title'] = f"Статьи от пользователя {self.kwargs.get('username')}"
+        ctx['title'] = f"Articles by {self.kwargs.get('username')}"
         return ctx
 
 
@@ -65,8 +65,8 @@ class UpdateNewsView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def get_context_data(self, **kwards):
         ctx = super(UpdateNewsView, self).get_context_data(**kwards)
 
-        ctx['title'] = 'Обновление статьи'
-        ctx['btn_text'] = 'Обновить статью'
+        ctx['title'] = 'Update article'
+        ctx['btn_text'] = 'Update'
         return ctx
     
 
@@ -106,8 +106,8 @@ class CreateNewsView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwards):
         ctx = super(CreateNewsView, self).get_context_data(**kwards)
 
-        ctx['title'] = 'Добавление статьи'
-        ctx['btn_text'] = 'Добавить статью'
+        ctx['title'] = 'Add article'
+        ctx['btn_text'] = 'Add'
         return ctx
 
     def form_valid(self, form):
@@ -126,18 +126,16 @@ def contacti(request):
             message = form.cleaned_data['message']
             
             # Відправка повідомлення на пошту
-            subject = f"Повідомлення від {name}"
-            plain_message = f"Від: {name}\nEmail: {email}\n\nПовідомлення:\n{message}"
+            subject = f"Message from {name}"
+            plain_message = f"From: {name}\nEmail: {email}\n\nnMessage:\n{message}"
             from_email = settings.EMAIL_HOST_USER  # пошта відправника (встановлено в settings.py)
             to = "andriykushnir05@gmail.com"  # пошта отримувача
 
             send_mail(subject, plain_message, from_email, [to])
 
-            # Збереження повідомлення в базі
-            # Якщо потрібно, створіть модель для зберігання повідомлень
 
             # Повідомлення про успішну відправку
-            messages.success(request, 'Ваше повідомлення надіслано! Ми з вами зв’яжемось найближчим часом.')
+            messages.success(request, 'Your message has been sent! We will contact you soon.')
             return render(request, 'blog/contacti.html', {'form': form})
 
     else:

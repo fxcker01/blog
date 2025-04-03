@@ -11,7 +11,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Пользователь {username} был успешно создан!')
+            messages.success(request, f'User {username} was successfully created!')
             return redirect('home')
     else:
         form = UserRegisterForm()
@@ -20,7 +20,7 @@ def register(request):
         request, 
         'users/registration.html', 
         {
-            'title': 'Страница регистрации',
+            'title': 'Registration pageи',
             'form': form
         },
     )

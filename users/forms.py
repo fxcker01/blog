@@ -6,26 +6,26 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserRegisterForm(UserCreationForm):
     username = forms.CharField(
-        label= 'Введите логин', 
+        label= 'Username',
         required=True, 
-        help_text='Нельзя вводить символы: @, /, _',
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите логин:'})
+        help_text='Do not use characters: @, /, _',
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter username:'})
     )
     email = forms.EmailField(
-        label= 'Введите Email',
+        label= 'Email',
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите Email:'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter email:'})
     )
     # some = forms.ModelChoiceField(queryset=User.objects.all())
-    password1 = forms.CharField(label= 'Введите пароль', 
+    password1 = forms.CharField(label= 'Password',
     required=True, 
-    help_text='Пароль не должен быть маленьким и простым',
-    widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Введите пароль:'})
+    help_text='Password should not be too short or simple',
+    widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter password:'})
     )
     password2 = forms.CharField(
-        label= 'Подтвердите пароль',
+        label= 'Confirm password',
         required=True,
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Повторно введите пароль:'})
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Re-enter password:'})
     )
 
 
@@ -37,15 +37,15 @@ class UserRegisterForm(UserCreationForm):
 
 class UserUpdateForm(forms.ModelForm):
     username = forms.CharField(
-        label= 'Введите логин', 
+        label= 'Username',
         required=True, 
-        help_text='Нельзя вводить символы: @, /, _',
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите логин:'})
+        help_text='Do not use characters: @, /, _',
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter username:'})
     )
     email = forms.EmailField(
-        label = 'Введите Email',
+        label = 'Email',
         required = True,
-        widget = forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите Email:'})
+        widget = forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter email:'})
     )
     
 
@@ -67,18 +67,18 @@ class UserUpdateForm(forms.ModelForm):
 
 class ProfileImageForm(forms.ModelForm):
     img = forms.ImageField(
-        label= 'Загрузить фото',
+        label= 'Upload photo',
         required=False,
         widget=forms.FileInput
     )
     gender = forms.ChoiceField(
-        label='Выберите пол',
+        label='Select gender',
         choices = Profile.CHOICES,
         required = True,
         widget = forms.Select(attrs={'class': 'form-control'})
     )
     receive_newsletter = forms.BooleanField(
-        label = 'Получать новости',
+        label = 'Subscribe to newsletter',
         required = False,
         widget = forms.CheckboxInput(attrs={'class': 'form-check-input'})
     )

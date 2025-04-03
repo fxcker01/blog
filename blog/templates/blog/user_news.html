@@ -5,40 +5,44 @@
 {% endblock %}
 
 {% block content %}
-<h2>All articles by {{ view.kwargs.username }}</h2>
-<h5>Total: {{ page_obj.paginator.count }}</h5>
-
-{% for post in news %}
-<div class="alert alert-light">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.text|striptags|truncatechars:200 }}</p>
-    <div class="d-flex align-items-start">
-        <img src="{{ post.avtor.profile.img.url }}" alt="{{ post.avtor }}" class="user_images me-3">
-        <div>
-            <span class="d-block text-muted">Published: {{ post.date|date:"M d, Y at H:i" }}</span>
-            <p><b>Author:</b> <a href="{% url 'user-news' post.avtor %}">{{ post.avtor }}</a></p>
+<div class="container py-4">
+    {% for post in news %}
+    <div class="alert alert-light mb-4 shadow-sm rounded">
+        <h1 class="h4">{{ post.title }}</h1>
+        <p class="text-muted">{{ post.text|striptags|truncatechars:200 }}</p>
+        <div class="row align-items-center mt-3">
+            <div class="d-flex gap-3 align-items-center">
+                <img src="{{ post.avtor.profile.img.url }}" alt="{{ post.avtor }}" class="rounded-circle border" style="width: 48px; height: 48px; object-fit: cover;">
+                <div class="small">
+                    <span class="text-muted d-block">Published: {{ post.date|date:"d E Y \a\t H:i" }}</span>
+                    <p class="mb-0"><strong>Author:</strong> <a href="{% url 'user-news' post.avtor %}" class="text-decoration-none">{{ post.avtor }}</a></p>
+                </div>
+            </div>
         </div>
+        <a href="{% url 'news-detail' post.id %}" class="btn btn-outline-warning btn-sm mt-3">Read more</a>
     </div>
-    <a href="{% url 'news-detail' post.id %}" class="btn btn-outline-warning mt-3">Read more</a>
-</div>
-{% endfor %}
+    {% endfor %}
 
-{% if is_paginated %}
-<div class="d-flex justify-content-center gap-2 mt-4">
-    {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-secondary">Previous</a>
+    {% if is_paginated %}
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="btn btn-outline-danger btn-sm">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-danger btn-sm">Previous</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if num == page_obj.number %}
+                    <span class="btn btn-danger btn-sm disabled">{{ num }}</span>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a href="?page={{ num }}" class="btn btn-outline-danger btn-sm">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-danger btn-sm">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-danger btn-sm">Last</a>
+            {% endif %}
+        </div>
     {% endif %}
-
-    <span class="align-self-center">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-
-    {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-secondary">Next</a>
-    {% endif %}
 </div>
-{% endif %}
-{% endblock %}
-{% block aside_block %}
-    <div class="col-lg-3 sidebar ml-5">
-        {% include 'blog/sidebar.html' %}
-    </div>
 {% endblock %}
