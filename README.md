@@ -52,4 +52,4 @@ Secret key and debug settings configured for production
 
 (Deployment instructions can be added later)
 
-🙌 Auth
+🙌 Author Made by fxcker01 as part of my personal portfolio. Feel free to use this project for learning or real-world use.
