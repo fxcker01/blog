@@ -18,10 +18,18 @@
             <div class="collapse navbar-collapse" id="navbarsExample09">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                           {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}
+                            href="{% url 'home' %}">
+                            Home
+                            </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'contacti' %}active{% endif %}" href="{% url 'contacti' %" href="{% url 'contacti' %}">Contacts</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'contacti' %}active{% endif %}"
+                           {% if request.resolver_match.url_name == 'contacti' %}aria-current="page"{% endif %}
+                           href="{% url 'contacti' %}">
+                            Contacts
+                        </a>
                     </li>
                 </ul>
 
