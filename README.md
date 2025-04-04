@@ -2,16 +2,29 @@
 
 A minimal, customizable Django-based blog engine with authentication, author profiles, article creation, pagination, and Bootstrap-adaptive layout. Ideal for personal use, quick startup projects, or client-ready blog solutions.
 
-## 🚀 Features
+🛠 Technologies Used
+Backend:
+Python, Django, Django REST Framework (DRF)
 
-- 🧑‍💻 User registration, login & profile
-- 📝 Post creation (news/articles)
-- 🖼 Author avatars
-- 📄 Pagination
-- 📱 Mobile responsive (Bootstrap 5)
-- 🔐 Access control for staff/superusers
-- 🚫 Admin panel can be disabled
-- 🌐 Deploy-ready for Railway
+Frontend:
+Vue.js, Bootstrap, HTML, CSS
+
+Database:
+SQLite (local development), easily replaceable with PostgreSQL
+
+Deployment:
+Railway, Git, GitHub
+
+🚀 Features
+User authentication (Sign Up, Sign In, Log Out)
+
+Profile management with avatar upload
+
+CRUD functionality for blog posts
+
+Responsive and mobile-friendly design
+
+Clean, modular codebase for future improvements and scalability
 
 ---
 
