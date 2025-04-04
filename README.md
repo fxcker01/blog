@@ -3,16 +3,16 @@
 A minimal, customizable Django-based blog engine with authentication, author profiles, article creation, pagination, and Bootstrap-adaptive layout. Ideal for personal use, quick startup projects, or client-ready blog solutions.
 
 🛠 Technologies Used
-Backend:
+- Backend:
 Python, Django
 
-Frontend:
+- Frontend:
 Bootstrap, HTML, CSS
 
-Database:
+- Database:
 SQLite 
 
-Deployment:
+- Deployment:
 Railway, Git, GitHub
 
 🚀 Features
