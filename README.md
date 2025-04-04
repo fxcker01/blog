@@ -16,15 +16,15 @@ SQLite
 Railway, Git, GitHub
 
 🚀 Features
-User authentication (Sign Up, Sign In, Log Out)
+- User authentication (Sign Up, Sign In, Log Out)
 
-Profile management with avatar upload
+- Profile management with avatar upload
 
-CRUD functionality for blog posts
+- CRUD functionality for blog posts
 
-Responsive and mobile-friendly design
+- Responsive and mobile-friendly design
 
-Clean, modular codebase for future improvements and scalability
+- Clean, modular codebase for future improvements and scalability
 
 ---
 
