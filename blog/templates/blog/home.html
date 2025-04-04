@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+    {{ Page of articles }}
     {% for post in news %}
     <div class="alert alert-light">
         <h1>{{ post.title }}</h1>
