@@ -4,13 +4,13 @@ A minimal, customizable Django-based blog engine with authentication, author pro
 
 🛠 Technologies Used
 Backend:
-Python, Django, Django REST Framework (DRF)
+Python, Django
 
 Frontend:
-Vue.js, Bootstrap, HTML, CSS
+Bootstrap, HTML, CSS
 
 Database:
-SQLite (local development), easily replaceable with PostgreSQL
+SQLite 
 
 Deployment:
 Railway, Git, GitHub
